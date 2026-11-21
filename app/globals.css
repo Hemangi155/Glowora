@@ -1,26 +1,87 @@
-@import "tailwindcss";
+﻿@import "tailwindcss";
+
+@theme {
+  --font-serif: var(--font-serif), "Cormorant Garamond", "Playfair Display", Georgia, serif;
+  --font-sans: var(--font-sans), "Plus Jakarta Sans", system-ui, sans-serif;
+
+  --color-ivory: #FAF8F5;
+  --color-ivory-light: #FDFBF8;
+  --color-ivory-dark: #F3EFEA;
+  --color-ivory-border: #E8E2D8;
+
+  --color-champagne: #DFD3C3;
+  --color-champagne-light: #F4EFE6;
+  --color-champagne-gold: #C5A880;
+  --color-champagne-dark: #9A7B55;
+
+  --color-sage: #536F5A;
+  --color-sage-light: #8BA491;
+  --color-sage-pale: #EBF2EC;
+  --color-sage-dark: #374B3C;
+
+  --color-charcoal: #1F2421;
+  --color-charcoal-light: #3D4440;
+  --color-charcoal-muted: #6E7570;
+  --color-charcoal-subtle: #9EA6A0;
+}
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  --background: #FAF8F5;
+  --foreground: #1F2421;
 }
 
 body {
-  background: var(--background);
+  background-color: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-sans);
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Custom editorial typography utility classes */
+.font-editorial {
+  font-family: var(--font-serif);
+}
+
+/* Smooth custom scrollbars */
+::-webkit-scrollbar {
+  width: 7px;
+  height: 7px;
+}
+
+::-webkit-scrollbar-track {
+  background: #FAF8F5;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #D9D2C6;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #C4B9AA;
+}
+
+/* Glassmorphism blur effects */
+.glass-nav {
+  background: rgba(250, 248, 245, 0.88);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+.glass-card {
+  background: rgba(255, 255, 255, 0.75);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+/* Shimmer and subtle glow animations */
+@keyframes softPulse {
+  0%, 100% { opacity: 0.95; transform: scale(1); }
+  50% { opacity: 0.75; transform: scale(0.98); }
+}
+
+.animate-soft-pulse {
+  animation: softPulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite;
 }
